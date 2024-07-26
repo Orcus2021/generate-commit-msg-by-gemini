@@ -1,0 +1,31 @@
+{
+  "name": "generate-commit-msg-by-gemini",
+  "version": "1.0.0",
+  "description": "A tool to generate Git commit messages using Gemini",
+  "main": "index.js",
+  "scripts": {
+    "ggc": "node ./index.js",
+    "init-setup": "npm install && cp .env.example .env",
+    "global-setup": "node ./globalSetup.js"
+  },
+  "bin": {
+    "ggc": "./index.js"
+  },
+  "author": "Orcus",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "dotenv": "^16.4.5",
+    "inquirer": "^10.1.2"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "message",
+    "AI",
+    "Gemini"
+  ]
+}
