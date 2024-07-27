@@ -1,4 +1,4 @@
-async function getCommitMessageFromGemini(changes, model) {
+const getPrompt = (changes) => {
   const prompt = ` **You are a professional code analyst.**
 
   Please write a concise and meaningful Git commit message for the following file changes in the specified format:
@@ -31,6 +31,7 @@ async function getCommitMessageFromGemini(changes, model) {
 
   Bad:
   feat(index, other): improve performance with lazy load implementation for images\n
+  feat(src/feature/components/SomeComponent): improve performance with lazy load implementation for images\n
 
   Do not include any additional description or explanation.\n
   Format your response exactly as:\nGit commit message: <type>(<scope>): <subject> \n
@@ -38,6 +39,12 @@ async function getCommitMessageFromGemini(changes, model) {
   File changes:
   \n${changes}\n
   `;
+
+  return prompt;
+};
+
+async function getCommitMessageFromGemini(changes, model) {
+  const prompt = getPrompt(changes);
 
   try {
     const result = await model.generateContent(prompt);
