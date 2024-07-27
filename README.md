@@ -8,6 +8,8 @@ This tool leverages the power of Gemini AI to automatically generate meaningful 
 
 1. Visit [Google AI Studio](https://ai.google.dev/aistudio).
 2. Sign in and obtain your API key from the dashboard.
+> [!WARNING]  
+> If you are using a free plan, the data will be sent to Google as training data. Paid plans do not send data to Google. For more details, please refer to the [Plan information](https://aistudio.google.com/app/plan_information).
 
 ### Installation Steps
 
