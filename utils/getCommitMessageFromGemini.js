@@ -22,6 +22,7 @@ const getPrompt = (changes) => {
   -	If only one file is affected, use the only file name as the scope.\n
   -	If multiple files are affected, leave the scope blank.\n
   * **subject** is a concise description of the change\n
+  - The first letter of the subject should be lowercase.\n
 
   Examples:
 
@@ -30,11 +31,11 @@ const getPrompt = (changes) => {
   chore: update npm dependency to latest version
 
   Bad:
-  feat(index, other): improve performance with lazy load implementation for images\n
-  feat(src/feature/components/SomeComponent): improve performance with lazy load implementation for images\n
+  feat(index, other): improve performance with lazy load implementation for images
+  feat(src/feature/components/SomeComponent): improve performance with lazy load implementation for images
 
-  Do not include any additional description or explanation.\n
-  Format your response exactly as:\nGit commit message: <type>(<scope>): <subject> \n
+  Do not include any additional description or explanation.
+  Format your response exactly as:\nGit commit message: <type>(<scope>): <subject>
 
   File changes:
   \n${changes}\n
@@ -50,7 +51,10 @@ async function getCommitMessageFromGemini(changes, model) {
     const result = await model.generateContent(prompt);
     const response = result.response;
     const text = response.text();
-    return text.replace(/^Git commit message:\s*/, '');
+    return text
+      .replace(/^Git commit message:\s*/, '')
+      .replace(/\n/g, '')
+      .trim();
   } catch (error) {
     console.error('Error during commit message generation:', error);
     throw new Error('Failed to generate commit message.');
