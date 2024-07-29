@@ -12,7 +12,6 @@ This tool leverages the power of Gemini AI to automatically generate meaningful 
 1. Visit [Google AI Studio](https://ai.google.dev/aistudio).
 2. Sign in and obtain your API key from the dashboard.
 
-
 ### Installation Steps
 
 1. **Initialize the Project**
@@ -75,7 +74,11 @@ The tool will automatically generate a Git commit message based on the changes i
 
 ### Customizing the Prompt
 
-If you want to customize the prompt used to generate the commit message, you can modify it in the `utils/getCommitMessageFromGemini` file. Adjust the prompt text to suit your needs and preferences.
+If you want to customize the prompt used to generate the commit message, you can modify it in the .env file by setting the CUSTOM_PROMPT variable:
+
+```
+CUSTOM_PROMPT="Your custom prompt text here"
+```
 
 ### Models
 
